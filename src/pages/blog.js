@@ -43,7 +43,7 @@ const BlogIndex = ({ data }) => {
 
 export const query = graphql`
 query blogIndex {
-  allContentfulBlogpost {
+  allContentfulBlogpost(sort: {fields: date, order: DESC}) {
     edges {
       node {
         author
