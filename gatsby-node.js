@@ -1,7 +1,6 @@
 const path = require(`path`)
 const { node } = require("prop-types")
 
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -19,15 +18,15 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const blogPages = await graphql(`
-  {
-    allContentfulBlogpost {
-    edges {
-      node {
-        contentful_id
+    {
+      allContentfulBlogpost {
+        edges {
+          node {
+            contentful_id
+          }
+        }
       }
     }
-  }
-}
   `)
 
   pages.data.allContentfulPage.edges.forEach(({ node }) => {
@@ -35,8 +34,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: node.slug,
       component: path.resolve("./src/templates/Page.tsx"),
       context: {
-        contentful_id: node.contentful_id
-      }
+        contentful_id: node.contentful_id,
+      },
     })
   })
 
@@ -45,10 +44,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: "blog/" + node.contentful_id,
       component: path.resolve("./src/templates/BlogEntry.tsx"),
       context: {
-        contentful_id: node.contentful_id
-      }
+        contentful_id: node.contentful_id,
+      },
     })
-  }) 
-
-
+  })
 }

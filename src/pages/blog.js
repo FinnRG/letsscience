@@ -42,28 +42,28 @@ const BlogIndex = ({ data }) => {
 }
 
 export const query = graphql`
-query blogIndex {
-  allContentfulBlogpost(sort: {fields: date, order: DESC}) {
-    edges {
-      node {
-        author
-        contentful_id
-        date
-        title
-        content {
-          childMdx {
-            excerpt
+  query blogIndex {
+    allContentfulBlogpost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          author
+          contentful_id
+          date
+          title
+          content {
+            childMdx {
+              excerpt
+            }
           }
-        }
-        preview {
-          file {
-            url
+          preview {
+            file {
+              url
+            }
           }
         }
       }
     }
   }
-}`
-
+`
 
 export default BlogIndex
