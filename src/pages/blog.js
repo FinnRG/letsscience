@@ -31,7 +31,7 @@ const BlogIndex = ({ data }) => {
               <div className="content">
                 {post.content.childMdx.excerpt}
                 <br />
-                <time>{post.date}</time>
+                <time>{post.date.replace("T", " ")}</time>
               </div>
             </div>
           </div>
@@ -49,6 +49,7 @@ query blogIndex {
         author
         contentful_id
         date
+        title
         content {
           childMdx {
             excerpt
